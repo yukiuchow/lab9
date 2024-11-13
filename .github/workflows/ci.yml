@@ -1,0 +1,26 @@
+name: Test Workflow  
+  
+on:  
+  push:  
+    branches:  
+      - main # Trigger the workflow when code is pushed to the main branch  
+  
+jobs:  
+  test:  
+    name: Run Tests  
+    runs-on: ubuntu-latest # Run on the latest version of Ubuntu  
+  
+    steps:  
+      - name: Checkout Code  
+        uses: actions/checkout@v3 # Use the actions/checkout action to checkout the code  
+  
+      - name: Set up Node.js  
+        uses: actions/setup-node@v3 # Use the actions/setup-node action to set up the Node.js environment  
+        with:  
+          node-version: '16' # Set the Node.js version to use  
+  
+      - name: Install Dependencies  
+        run: npm install # Install project dependencies (if any)  
+  
+      - name: Run Tests  
+        run: npm test # Assuming you have an npm test script that will run your tests
